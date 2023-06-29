@@ -1,0 +1,29 @@
+class Solution {
+    public List<Integer> findLonely(int[] nums) {
+        ArrayList<Integer> lonely=new ArrayList<>();
+        ArrayList<Integer> list=new ArrayList<>();
+       for(int num:nums){
+           lonely.add(num);
+        }
+        Collections.sort(lonely);
+        for(int i=1;i<lonely.size()-1;i++){
+            if(lonely.get(i-1)+1<lonely.get(i) && lonely.get(i)+1<lonely.get(i+1)){
+                list.add(lonely.get(i));
+            }
+        }
+        if(lonely.size()==1){
+            list.add(lonely.get(0));
+        }
+        if(lonely.size()>1){
+            if(lonely.get(0)+1<lonely.get(1)){
+                list.add(lonely.get(0));
+            }
+            if(lonely.get(lonely.size()-2)+1<(lonely.get(lonely.size()-1))){
+                list.add(lonely.get(lonely.size()-1));
+            }
+        }
+            
+        
+        return list;
+    }
+}
